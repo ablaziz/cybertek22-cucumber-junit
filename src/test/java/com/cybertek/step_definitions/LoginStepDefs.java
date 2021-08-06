@@ -42,4 +42,19 @@ public class LoginStepDefs {
     public void userEntersAdminPassword() {
         System.out.println("user enters admin password");
     }
+
+    @When("user searches foe mango")
+    public void userSearchesForMango() {
+        
+    }
+
+    @When("user searches foe {string}")
+    public void userSearchesFor(String arg0) {
+
+    }
+
+    @Then("User should see {string} in the title")
+    public void userShouldSeeInTheTitle(String arg0) {
+
+    }
 }

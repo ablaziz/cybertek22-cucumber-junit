@@ -8,8 +8,13 @@ Feature: Google search functionality
     Then user should see title is Google
 
 
-@wip
+
   Scenario: User search title verification
     Given user is on Google hom page
-    When user searches foe apple
+    When user searches foe mango
     Then User should see apple in the title
+
+  Scenario: User search title verification
+    Given user is on Google hom page
+    When user searches foe "mango"
+    Then User should see "mango" in the title
