@@ -3,6 +3,7 @@ package com.cybertek.step_definitions;
 import com.cybertek.pages.WikiSearchPage;
 import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.Driver;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -33,9 +34,30 @@ WikiSearchPage wikiSearchPage = new WikiSearchPage();
 
     @When("user types {string} in the wiki search box")
     public void userTypesInTheWikiSearchBox(String arg0) {
+        wikiSearchPage.searchBox.sendKeys(arg0);
     }
 
     @Then("user sees {string} is in the wiki title")
     public void userSeesIsInTheWikiTitle(String arg0) {
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedTitle = arg0+" - Wikipedia";
+
+        Assert.assertEquals(expectedTitle,actualTitle);
+    }
+
+    @Then("User sees {string} is in the main header")
+    public void userSeesIsInTheMainHeader(String arg0) {
+    String expectedMainHeader = arg0;
+    String actualHeader = wikiSearchPage.mainHeader.getText();
+
+    Assert.assertEquals(actualHeader,expectedMainHeader);
+    }
+
+    @Then("User sees {string} is in the image header")
+    public void userSeesIsInTheImageHeader(String arg0) {
+        String expectedImageTitle = arg0;
+        String actualImageTitle = wikiSearchPage.imageHeader.getText();
+
+        Assert.assertEquals(actualImageTitle,expectedImageTitle);
     }
 }
