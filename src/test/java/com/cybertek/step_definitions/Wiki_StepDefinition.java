@@ -31,4 +31,11 @@ WikiSearchPage wikiSearchPage = new WikiSearchPage();
         Assert.assertEquals(expectedTitle,actualTitle);
     }
 
+    @When("user types {string} in the wiki search box")
+    public void userTypesInTheWikiSearchBox(String arg0) {
+    }
+
+    @Then("user sees {string} is in the wiki title")
+    public void userSeesIsInTheWikiTitle(String arg0) {
+    }
 }
