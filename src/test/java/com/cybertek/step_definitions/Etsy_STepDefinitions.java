@@ -1,9 +1,11 @@
 package com.cybertek.step_definitions;
 
+import com.cybertek.pages.EtsySearchPage;
 import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class Etsy_STepDefinitions {
@@ -20,4 +22,22 @@ public class Etsy_STepDefinitions {
 
         Assert.assertTrue("Title is not as expected!",actualTitle.equals(expectedTitle));
     }
+    EtsySearchPage etsySearchPage = new EtsySearchPage();
+
+    @When("user types Wooden Spoon in the search box")
+    public void user_types_wooden_spoon_in_the_search_box() {
+        etsySearchPage.searchBar.sendKeys("Wooden spoon");
+    }
+    @When("user clicks to search button")
+    public void user_clicks_to_search_button() {
+        etsySearchPage.searchButton.click();
+    }
+    @Then("use sees title is Wooden spoon | Etsy")
+    public void use_sees_title_is_wooden_spoon_etsy() {
+        String expectedTitle = "Wooden spoon | Etsy";
+       String actualTitle = Driver.getDriver().getTitle();
+
+       Assert.assertEquals("Title is not as expected",actualTitle,expectedTitle);
+    }
+
 }
